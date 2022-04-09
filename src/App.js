@@ -1,6 +1,5 @@
 import "./App.css";
-import logo from "./logo.png";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import {
   History,
   Home,
