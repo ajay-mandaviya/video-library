@@ -1,0 +1,33 @@
+.sidebar-container {
+  background-color: var(--sidebar-bg-color);
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  position: fixed;
+  overflow-y: auto;
+  left: 0;
+  height: 100%;
+}
+.sidebar-container ul {
+  padding: 0;
+  margin: 0;
+}
+.sidebar-link i {
+  color: var(--white-color);
+  font-size: 1.2rem;
+}
+.active {
+  background-color: #343343;
+}
+.sidebar-link:hover {
+  background-color: #343343;
+}
+.sidebar-link {
+  display: flex;
+  padding: 1rem;
+}
+.sidebar-link > div {
+  margin-left: 1rem;
+  color: var(--white-color);
+  font-size: 1.2rem;
+}
