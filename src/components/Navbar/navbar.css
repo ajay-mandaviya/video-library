@@ -19,6 +19,7 @@
   display: flex;
 }
 .search-box {
+  width: 40%;
   display: flex;
   align-items: center;
   border: 2px solid var(--white-color);
@@ -29,8 +30,9 @@
   background: transparent;
   border: none;
   outline: none;
-
+  width: 100%;
   margin-left: 0.5rem;
+  font-size: 1rem;
 }
 .search-box input ::placeholder {
   color: var(--white-color);
