@@ -2,23 +2,23 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./singleVideo.css";
 import axios from "axios";
-import { Loader, VideoCard } from "../../components";
-import { useData } from "../../context/VideoContext";
-import { shuffleArray } from "../../utils/arraysManuPlation";
+import { Loader } from "../../components";
+// import { useData } from "../../context/VideoContext";
+// import { shuffleArray } from "../../utils/arraysManuPlation";
 
 const SingleVideo = () => {
   const { videoId } = useParams();
-  const {
-    data: { videos },
-  } = useData();
+  // const {
+  //   data,
+  // } = useData();
   const [isLoading, setIsLoading] = useState(true);
   const [video, setVideo] = useState();
-  const [categoryVideos, setCategoryVideo] = useState([]);
-  const getCategoryVideo = (categorys) => {
-    const data = videos.filter((video) => video.category === categorys);
-    const shufleVideo = shuffleArray(data);
-    setCategoryVideo(shufleVideo);
-  };
+  // const [categoryVideos, setCategoryVideo] = useState([]);
+  // const getCategoryVideo = (categorys) => {
+  //   const data = videos.filter((video) => video.category === categorys);
+  //   const shufleVideo = shuffleArray(data);
+  //   // setCategoryVideo(shufleVideo);
+  // };
   const getVideo = async () => {
     try {
       setIsLoading(true);
@@ -34,7 +34,7 @@ const SingleVideo = () => {
   };
   useEffect(() => {
     getVideo();
-  }, [videoId]);
+  }, []);
 
   if (isLoading) {
     return <Loader />;
