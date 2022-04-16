@@ -3,6 +3,7 @@ import axios from "axios";
 import { DataAction } from "../constants";
 import { dataReducer } from "../reduer";
 import { shuffleArray } from "../utils/arraysManuPlation";
+import { getLikeVideos } from "../services";
 
 const DataProvider = createContext();
 
@@ -44,18 +45,18 @@ const VideoProvider = ({ children }) => {
         type: DataAction.SET_VIDEOS,
         payload: shuffleVideos,
       });
-      console.log("vdo response", videos);
     } catch (error) {
       console.log("error while get vudeis", error);
     }
   };
-
   useEffect(() => {
     getAllVideos();
   }, []);
 
   return (
-    <DataProvider.Provider value={{ data }}>{children}</DataProvider.Provider>
+    <DataProvider.Provider value={{ data, dispatch }}>
+      {children}
+    </DataProvider.Provider>
   );
 };
 
