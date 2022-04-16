@@ -13,7 +13,7 @@ import {
 } from "./pages";
 import { Navbar, Sidebar } from "./components";
 import { useAuth, useData } from "./context";
-import { getAllHistory, getLikeVideos } from "./services";
+import { getAllHistory, getLikeVideos, getWatchLaterVideos } from "./services";
 
 function App() {
   const { dispatch } = useData();
@@ -27,6 +27,7 @@ function App() {
     if (token) {
       getLikeVideos(dispatch, token);
       getAllHistory(token, dispatch);
+      getWatchLaterVideos(token, dispatch);
     }
   }, [token]);
 

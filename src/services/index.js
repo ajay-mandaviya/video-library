@@ -5,7 +5,13 @@ import {
   removeHistoryVideo,
   clearHistoryVideo,
 } from "./history";
+
 import { addToLike, getLikeVideos, removeLike } from "./likeapi";
+import {
+  addToWatchLater,
+  getWatchLaterVideos,
+  removeToWatchLater,
+} from "./watchLater";
 
 export {
   loginApi,
@@ -17,4 +23,7 @@ export {
   removeHistoryVideo,
   addHistoryVideo,
   clearHistoryVideo,
+  getWatchLaterVideos,
+  removeToWatchLater,
+  addToWatchLater,
 };

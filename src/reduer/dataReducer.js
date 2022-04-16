@@ -21,6 +21,11 @@ export const dataReducer = (state, action) => {
         ...state,
         history_videos: [...action.payload],
       };
+    case DataAction.SET_WATCH_LATER_VIDEOS:
+      return {
+        ...state,
+        watchLater_videos: [...action.payload],
+      };
     default:
       return state;
   }

@@ -6,24 +6,31 @@ import { Loader } from "../../components";
 import { useData } from "../../context/VideoContext";
 import { isVideoInList } from "../../utils";
 import { useAuth } from "../../context";
-import { addHistoryVideo, addToLike, removeLike } from "../../services";
+import {
+  addHistoryVideo,
+  addToLike,
+  addToWatchLater,
+  removeLike,
+  removeToWatchLater,
+} from "../../services";
 
 const SingleVideo = () => {
   const { videoId } = useParams();
 
   const {
-    data: { liked_videos, history_videos },
+    data: { liked_videos, history_videos, watchLater_videos },
     dispatch,
   } = useData();
+  console.log("watchLater_videos", watchLater_videos);
   const isInLike = isVideoInList(liked_videos, videoId);
   const isInHistory = isVideoInList(history_videos, videoId);
+  const isInWatchLater = isVideoInList(watchLater_videos, videoId);
   const {
     auth: { token },
   } = useAuth();
   const [isLoading, setIsLoading] = useState(true);
   const [video, setVideo] = useState();
   const getVideo = async () => {
-    console.log("get the videos");
     try {
       setIsLoading(true);
       const {
@@ -47,6 +54,17 @@ const SingleVideo = () => {
         removeLike(videoId, token, dispatch);
       } else {
         addToLike(video, token, dispatch);
+      }
+    } else {
+    }
+  };
+
+  const handleAddToWatchLater = () => {
+    if (token) {
+      if (isInWatchLater) {
+        removeToWatchLater(videoId, token, dispatch);
+      } else {
+        addToWatchLater(video, token, dispatch);
       }
     } else {
     }
@@ -88,8 +106,18 @@ const SingleVideo = () => {
               ></i>
               <span>{isInLike ? "Liked" : "Like"}</span>
             </div>
-            <div className="user-btn">
-              <i className="fas fa-clock"></i>
+            <div
+              className={`${
+                isInWatchLater ? "user-btn user-btn-active" : "user-btn"
+              }`}
+              onClick={handleAddToWatchLater}
+            >
+              <i
+                className={`${
+                  isInWatchLater ? "fas fa-clock" : "far fa-clock"
+                }`}
+              ></i>
+
               <span>Watch Later</span>
             </div>
             <div className="user-btn">
