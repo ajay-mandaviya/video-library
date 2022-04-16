@@ -8,7 +8,7 @@ const VideoCard = (props) => {
       <div>
         <img
           src={`https://i.ytimg.com/vi/${_id}/0.jpg`}
-          alt="image"
+          alt="card-imgs"
           className="card-img"
         />
       </div>

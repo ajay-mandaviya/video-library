@@ -8,7 +8,6 @@ import { shuffleArray } from "../../utils/arraysManuPlation";
 
 const SingleVideo = () => {
   const { videoId } = useParams();
-  console.log("id is", videoId);
   const {
     data: { videos },
   } = useData();
@@ -20,21 +19,23 @@ const SingleVideo = () => {
     const shufleVideo = shuffleArray(data);
     setCategoryVideo(shufleVideo);
   };
-  console.log("categoryVideos", categoryVideos);
+
+  const getVideo = async () => {
+    try {
+      setIsLoading(true);
+      const {
+        data: { video },
+      } = await axios.get(`/api/video/${videoId}`);
+      setVideo(video);
+      getCategoryVideo(video.category);
+      setIsLoading(false);
+    } catch (error) {
+      console.log("error is", error.message);
+    }
+  };
+
   useEffect(() => {
-    (async () => {
-      try {
-        setIsLoading(true);
-        const {
-          data: { video },
-        } = await axios.get(`/api/video/${videoId}`);
-        setVideo(video);
-        getCategoryVideo(video.category);
-        setIsLoading(false);
-      } catch (error) {
-        console.log("error is", error.message);
-      }
-    })();
+    getVideo();
   }, [videoId]);
 
   if (isLoading) {
