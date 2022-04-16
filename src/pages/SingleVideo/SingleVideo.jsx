@@ -20,21 +20,20 @@ const SingleVideo = () => {
     setCategoryVideo(shufleVideo);
   };
 
-  const getVideo = async () => {
-    try {
-      setIsLoading(true);
-      const {
-        data: { video },
-      } = await axios.get(`/api/video/${videoId}`);
-      setVideo(video);
-      getCategoryVideo(video.category);
-      setIsLoading(false);
-    } catch (error) {
-      console.log("error is", error.message);
-    }
-  };
-
   useEffect(() => {
+    const getVideo = async () => {
+      try {
+        setIsLoading(true);
+        const {
+          data: { video },
+        } = await axios.get(`/api/video/${videoId}`);
+        setVideo(video);
+        getCategoryVideo(video.category);
+        setIsLoading(false);
+      } catch (error) {
+        console.log("error is", error.message);
+      }
+    };
     getVideo();
   }, [videoId]);
 
