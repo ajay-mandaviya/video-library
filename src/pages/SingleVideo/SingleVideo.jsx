@@ -19,24 +19,23 @@ const SingleVideo = () => {
     const shufleVideo = shuffleArray(data);
     setCategoryVideo(shufleVideo);
   };
-
+  const getVideo = async () => {
+    try {
+      setIsLoading(true);
+      const {
+        data: { video },
+      } = await axios.get(`/api/video/${videoId}`);
+      setVideo(video);
+      getCategoryVideo(video.category);
+      setIsLoading(false);
+    } catch (error) {
+      console.log("error is", error.message);
+    }
+  };
   useEffect(() => {
-    const getVideo = async () => {
-      try {
-        setIsLoading(true);
-        const {
-          data: { video },
-        } = await axios.get(`/api/video/${videoId}`);
-        setVideo(video);
-        getCategoryVideo(video.category);
-        setIsLoading(false);
-      } catch (error) {
-        console.log("error is", error.message);
-      }
-    };
-
     getVideo();
-  }, []);
+    getCategoryVideo();
+  }, [videoId]);
 
   if (isLoading) {
     return <Loader />;
@@ -47,7 +46,7 @@ const SingleVideo = () => {
       <div className="video-player">
         <iframe
           width="100%"
-          height="35%"
+          height="100%"
           src={`https://www.youtube.com/embed/${videoId}`}
           title="YouTube video player"
           frameBorder="0"
@@ -57,7 +56,7 @@ const SingleVideo = () => {
         <div className="video-info">
           <div>
             <h2 className="video-title">{video?.title}</h2>
-            <h3 className="video-creator">Creator {video?.creator}</h3>
+            <h3 className="video-creator">Creator : {video?.creator}</h3>
           </div>
 
           <div className="user-btns">
@@ -85,10 +84,10 @@ const SingleVideo = () => {
         </div>
       </div>
       <div className="suggest-videos">
-        {categoryVideos &&
+        {/* {categoryVideos &&
           categoryVideos?.map((video, index) => {
             return <VideoCard {...video} key={index} />;
-          })}
+          })} */}
       </div>
     </div>
   );
