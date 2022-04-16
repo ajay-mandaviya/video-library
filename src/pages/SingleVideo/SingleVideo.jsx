@@ -15,7 +15,7 @@ const SingleVideo = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [video, setVideo] = useState();
   const [categoryVideos, setCategoryVideo] = useState([]);
-  const getCategoryVideo = (categorys, id) => {
+  const getCategoryVideo = (categorys) => {
     const data = videos.filter((video) => video.category === categorys);
     const shufleVideo = shuffleArray(data);
     setCategoryVideo(shufleVideo);
@@ -29,7 +29,7 @@ const SingleVideo = () => {
           data: { video },
         } = await axios.get(`/api/video/${videoId}`);
         setVideo(video);
-        getCategoryVideo(video.category, videoId);
+        getCategoryVideo(video.category);
         setIsLoading(false);
       } catch (error) {
         console.log("error is", error.message);

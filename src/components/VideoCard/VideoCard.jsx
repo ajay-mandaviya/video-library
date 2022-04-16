@@ -6,7 +6,11 @@ const VideoCard = (props) => {
   return (
     <Link to={`/video/${_id}`} className="card" key={_id}>
       <div>
-        <img src={`https://i.ytimg.com/vi/${_id}/0.jpg`} className="card-img" />
+        <img
+          src={`https://i.ytimg.com/vi/${_id}/0.jpg`}
+          alt="image"
+          className="card-img"
+        />
       </div>
       <div className="card-description">
         <div className="card-info">
