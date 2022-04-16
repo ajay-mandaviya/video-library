@@ -34,8 +34,9 @@ const SingleVideo = () => {
         console.log("error is", error.message);
       }
     };
+
     getVideo();
-  }, [videoId]);
+  }, []);
 
   if (isLoading) {
     return <Loader />;
