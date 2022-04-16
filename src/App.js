@@ -7,6 +7,7 @@ import {
   Login,
   PlayList,
   Signup,
+  SingleVideo,
   WatchLater,
 } from "./pages";
 import { Navbar, Sidebar } from "./components";
@@ -18,6 +19,7 @@ function App() {
       <Sidebar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/video/:videoId" element={<SingleVideo />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/liked" element={<Liked />} />

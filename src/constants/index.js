@@ -1,3 +1,3 @@
-import { Authaction } from "./action";
+import { Authaction, DataAction } from "./action";
 
-export { Authaction };
+export { Authaction, DataAction };
