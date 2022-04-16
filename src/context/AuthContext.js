@@ -14,7 +14,7 @@ const AuthProvider = ({ children }) => {
     user: {},
   });
   useEffect(() => {
-    const streamUser = localStorage.getItem("streamUser");
+    const streamUser = JSON.parse(localStorage.getItem("streamUser"));
     streamUser?.token &&
       dispatchAuth({
         type: Authaction.SET_TOKEN,
@@ -25,7 +25,7 @@ const AuthProvider = ({ children }) => {
         type: Authaction.SET_USER,
         payload: streamUser.user,
       });
-  }, [auth.token]);
+  }, []);
 
   const loginUser = async (user) => {
     try {
@@ -33,7 +33,7 @@ const AuthProvider = ({ children }) => {
         data: { encodedToken, foundUser },
         status,
       } = await loginApi(user);
-      //   console.log(data);
+      console.log("slogin status", status);
       if (status === 200) {
         dispatchAuth({
           type: Authaction.SET_TOKEN,

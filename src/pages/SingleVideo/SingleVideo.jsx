@@ -3,31 +3,37 @@ import { useParams } from "react-router-dom";
 import "./singleVideo.css";
 import axios from "axios";
 import { Loader } from "../../components";
-// import { useData } from "../../context/VideoContext";
-// import { shuffleArray } from "../../utils/arraysManuPlation";
+import { useData } from "../../context/VideoContext";
+import { isVideoInList } from "../../utils";
+import { useAuth } from "../../context";
+import { addHistoryVideo, addToLike, removeLike } from "../../services";
 
 const SingleVideo = () => {
   const { videoId } = useParams();
-  // const {
-  //   data,
-  // } = useData();
+
+  const {
+    data: { liked_videos, history_videos },
+    dispatch,
+  } = useData();
+  const isInLike = isVideoInList(liked_videos, videoId);
+  const isInHistory = isVideoInList(history_videos, videoId);
+  const {
+    auth: { token },
+  } = useAuth();
   const [isLoading, setIsLoading] = useState(true);
   const [video, setVideo] = useState();
-  // const [categoryVideos, setCategoryVideo] = useState([]);
-  // const getCategoryVideo = (categorys) => {
-  //   const data = videos.filter((video) => video.category === categorys);
-  //   const shufleVideo = shuffleArray(data);
-  //   // setCategoryVideo(shufleVideo);
-  // };
   const getVideo = async () => {
+    console.log("get the videos");
     try {
       setIsLoading(true);
       const {
         data: { video },
       } = await axios.get(`/api/video/${videoId}`);
       setVideo(video);
-      // getCategoryVideo(video.category);
       setIsLoading(false);
+      if (!isInHistory && token) {
+        addHistoryVideo(token, video, dispatch);
+      }
     } catch (error) {
       console.log("error is", error.message);
     }
@@ -35,6 +41,16 @@ const SingleVideo = () => {
   useEffect(() => {
     getVideo();
   }, []);
+  const handleLike = () => {
+    if (token) {
+      if (isInLike) {
+        removeLike(videoId, token, dispatch);
+      } else {
+        addToLike(video, token, dispatch);
+      }
+    } else {
+    }
+  };
 
   if (isLoading) {
     return <Loader />;
@@ -59,9 +75,18 @@ const SingleVideo = () => {
           </div>
 
           <div className="user-btns">
-            <div className="user-btn">
-              <i className="fas fa-thumbs-up"></i>
-              <span>Like</span>
+            <div
+              className={`${
+                isInLike ? "user-btn user-btn-active" : "user-btn"
+              }`}
+              onClick={handleLike}
+            >
+              <i
+                className={`${
+                  isInLike ? "fas fa-thumbs-up" : "far fa-thumbs-up"
+                }`}
+              ></i>
+              <span>{isInLike ? "Liked" : "Like"}</span>
             </div>
             <div className="user-btn">
               <i className="fas fa-clock"></i>
@@ -82,12 +107,7 @@ const SingleVideo = () => {
           </div>
         </div>
       </div>
-      <div className="suggest-videos">
-        {/* {categoryVideos &&
-          categoryVideos?.map((video, index) => {
-            return <VideoCard {...video} key={index} />;
-          })} */}
-      </div>
+      <div className="suggest-videos">{/* here cateogry videos */}</div>
     </div>
   );
 };
