@@ -26,7 +26,7 @@ const SingleVideo = () => {
         data: { video },
       } = await axios.get(`/api/video/${videoId}`);
       setVideo(video);
-      getCategoryVideo(video.category);
+      // getCategoryVideo(video.category);
       setIsLoading(false);
     } catch (error) {
       console.log("error is", error.message);
@@ -34,7 +34,6 @@ const SingleVideo = () => {
   };
   useEffect(() => {
     getVideo();
-    getCategoryVideo();
   }, [videoId]);
 
   if (isLoading) {
