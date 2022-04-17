@@ -26,6 +26,16 @@ export const dataReducer = (state, action) => {
         ...state,
         watchLater_videos: [...action.payload],
       };
+    case DataAction.SET_SORT_CATEGORY:
+      return {
+        ...state,
+        sortBy: action.payload,
+      };
+    case DataAction.SET_SEARCH_VIDEO:
+      return {
+        ...state,
+        searchBy: action.payload,
+      };
     default:
       return state;
   }

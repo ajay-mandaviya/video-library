@@ -3,7 +3,6 @@ import axios from "axios";
 import { DataAction } from "../constants";
 import { dataReducer } from "../reduer";
 import { shuffleArray } from "../utils/arraysManuPlation";
-import { getLikeVideos } from "../services";
 
 const DataProvider = createContext();
 
@@ -17,6 +16,7 @@ const VideoProvider = ({ children }) => {
     liked_videos: [],
     watchLater_videos: [],
     sortBy: "",
+    searchBy: "",
   });
 
   useEffect(() => {

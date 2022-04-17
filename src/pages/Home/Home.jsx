@@ -1,22 +1,38 @@
 import React from "react";
-import { VideoCard } from "../../components";
+import { CategoryBtns, VideoCard } from "../../components";
 import { useData } from "../../context";
 import "./home.css";
-
 const Home = () => {
   const {
-    data: { videos, category },
+    data: { videos, category, sortBy, searchBy },
   } = useData();
-  console.log("category in home page", category);
+  const filterVideos = () => {
+    let sortNewVideos = videos;
+    if (searchBy) {
+      sortNewVideos = sortNewVideos.filter((video) =>
+        video.title.toLowerCase().includes(searchBy.toLowerCase())
+      );
+    }
+    if (sortBy && sortBy !== "All") {
+      sortNewVideos = sortNewVideos.filter(
+        (video) => video.category === sortBy
+      );
+    }
+    return sortNewVideos;
+  };
+
+  const filtersVideos = filterVideos();
+
+  console.log();
   return (
     <div className="page-component">
       <div className="category-btns">
         {category?.map((cat, index) => {
-          return <button key={cat._id}>{cat.categoryName}</button>;
+          return <CategoryBtns {...cat} key={index} />;
         })}
       </div>
       <div className="video-grid">
-        {videos?.map((video, index) => {
+        {filtersVideos?.map((video, index) => {
           return <VideoCard {...video} key={index} />;
         })}
       </div>

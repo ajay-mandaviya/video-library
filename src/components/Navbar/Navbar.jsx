@@ -1,7 +1,21 @@
 import React from "react";
 import "./navbar.css";
 import { Link } from "react-router-dom";
+import { useData } from "../../context";
+import { DataAction } from "../../constants";
 export const Navbar = () => {
+  const {
+    data: { searchBy },
+    dispatch,
+  } = useData();
+
+  console.log("search by", searchBy);
+  const handleSearch = (e) => {
+    dispatch({
+      type: DataAction.SET_SEARCH_VIDEO,
+      payload: e.target.value,
+    });
+  };
   return (
     <nav className="navbar">
       <label className="navbar-logo white-text">My Stream</label>
@@ -11,6 +25,8 @@ export const Navbar = () => {
           placeholder="Search Video"
           className="white-text"
           type={"search"}
+          value={searchBy}
+          onChange={handleSearch}
         ></input>
       </div>
       <ul>
