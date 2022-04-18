@@ -1,3 +1,4 @@
+import React, { useEffect } from "react";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import {
@@ -11,8 +12,25 @@ import {
   WatchLater,
 } from "./pages";
 import { Navbar, Sidebar } from "./components";
+import { useAuth, useData } from "./context";
+import { getAllHistory, getLikeVideos, getWatchLaterVideos } from "./services";
 
 function App() {
+  const { dispatch } = useData();
+
+  const {
+    auth: { token },
+  } = useAuth();
+
+  useEffect(() => {
+    console.log("home useEffect");
+    if (token) {
+      getLikeVideos(dispatch, token);
+      getAllHistory(token, dispatch);
+      getWatchLaterVideos(token, dispatch);
+    }
+  }, [token]);
+
   return (
     <div className="app">
       <Navbar />

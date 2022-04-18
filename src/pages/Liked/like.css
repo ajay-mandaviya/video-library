@@ -1,0 +1,13 @@
+.empty-box {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  align-items: center;
+  color: var(--white-color);
+  font-size: 1.2rem;
+}
+.btn-dark {
+  width: 10rem;
+}

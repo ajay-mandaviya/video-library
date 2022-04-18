@@ -1,0 +1,28 @@
+.category-btns {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.category-btns::-webkit-scrollbar {
+  display: none;
+}
+.category-btn {
+  padding: 0.3rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: #222230;
+  border: none;
+  color: var(--white-color);
+  border-radius: 0.75rem;
+  border: 1px solid transparent;
+}
+.category-btn:hover {
+  background-color: var(--active-color);
+  border: 1px solid var(--white-color);
+}
+
+.cat-btn-active {
+  background-color: var(--active-color);
+  border: 1px solid var(--white-color);
+}

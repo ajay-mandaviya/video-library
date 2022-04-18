@@ -1,0 +1,13 @@
+.history-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.history-btn {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  text-decoration: underline;
+  cursor: pointer;
+}
