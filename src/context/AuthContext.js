@@ -4,7 +4,7 @@ import { Authaction } from "../constants";
 import { authReducer } from "../reduer";
 import { loginApi, signUpUserApi } from "../services";
 import { useNavigate } from "react-router-dom";
-
+import toast from "react-hot-toast";
 const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
@@ -28,6 +28,7 @@ const AuthProvider = ({ children }) => {
   }, []);
 
   const loginUser = async (user) => {
+    const toastId = toast.loading("login...");
     try {
       const {
         data: { encodedToken, foundUser },
@@ -50,14 +51,22 @@ const AuthProvider = ({ children }) => {
             user: foundUser,
           })
         );
+
         navigate("/");
+        toast.success(`Hey Welcome Back ${foundUser.firstName}`, {
+          id: toastId,
+        });
       }
     } catch (error) {
       console.log("error while signin", error);
+      toast.error("try again", {
+        id: toastId,
+      });
     }
   };
 
   const signupUser = async (newUser) => {
+    const toastId = toast.loading("signing...");
     try {
       const {
         data: { createdUser, encodedToken },
@@ -82,8 +91,12 @@ const AuthProvider = ({ children }) => {
         );
         navigate("/");
       }
+      toast.success(`Hey Welcome ${createdUser.name}`, {
+        id: toastId,
+      });
     } catch (error) {
-      console.log("error in signyp", error);
+      console.log("error in sign", error);
+      toast.error("try again");
     }
   };
 

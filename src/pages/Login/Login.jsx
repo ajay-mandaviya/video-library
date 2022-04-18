@@ -9,7 +9,6 @@ const Login = () => {
     email: "",
     password: "",
   });
-
   // email: "adarshbalika@gmail.com",
   //   password: "adarshBalika123",
   const handleInputChange = (e) => {

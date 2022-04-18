@@ -6,6 +6,7 @@ import { Loader } from "../../components";
 import { useData } from "../../context/VideoContext";
 import { isVideoInList } from "../../utils";
 import { useAuth } from "../../context";
+import toast from "react-hot-toast";
 import {
   addHistoryVideo,
   addToLike,
@@ -56,6 +57,7 @@ const SingleVideo = () => {
         addToLike(video, token, dispatch);
       }
     } else {
+      toast.error("Please Login to Like Video");
     }
   };
 
@@ -67,6 +69,7 @@ const SingleVideo = () => {
         addToWatchLater(video, token, dispatch);
       }
     } else {
+      toast.error("Please Login to add Video");
     }
   };
 

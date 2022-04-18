@@ -1,6 +1,6 @@
 import axios from "axios";
 import { DataAction } from "../constants";
-
+import toast from "react-hot-toast";
 export const getLikeVideos = async (dispatch, token) => {
   try {
     const {
@@ -21,6 +21,7 @@ export const getLikeVideos = async (dispatch, token) => {
 };
 
 export const addToLike = async (video, token, dispatch) => {
+  const toastId = toast.loading("adding...");
   try {
     const {
       data: { likes },
@@ -39,8 +40,14 @@ export const addToLike = async (video, token, dispatch) => {
       type: DataAction.SET_LIKE_VIDEOS,
       payload: likes,
     });
+    toast.success("Video added to Like", {
+      id: toastId,
+    });
   } catch (error) {
     console.log("Erro in add to like", error);
+    toast.error("try again", {
+      id: toastId,
+    });
   }
 };
 
@@ -57,8 +64,9 @@ export const removeLike = async (id, token, dispatch) => {
       type: DataAction.SET_LIKE_VIDEOS,
       payload: likes,
     });
-    console.log("data after delte", likes);
+    toast.success("Video Remove from like");
   } catch (error) {
+    toast.error("try again");
     console.log("error while remove from liked", error);
   }
 };
