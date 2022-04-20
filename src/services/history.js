@@ -1,5 +1,6 @@
 import axios from "axios";
 import { DataAction } from "../constants";
+import toast from "react-hot-toast";
 export const getAllHistory = async (token, dispatch) => {
   try {
     const {
@@ -20,6 +21,7 @@ export const getAllHistory = async (token, dispatch) => {
 };
 export const addHistoryVideo = async (token, video, dispatch) => {
   console.log("adding video into history");
+
   try {
     const {
       data: { history },
@@ -57,11 +59,14 @@ export const removeHistoryVideo = async (token, id, dispatch) => {
       type: DataAction.SET_HISTORY_VIDEOS,
       payload: history,
     });
+    toast.success("video remove successfully");
   } catch (error) {
     console.log("Error while add remove history", error);
+    toast.error("try again");
   }
 };
 export const clearHistoryVideo = async (token, dispatch) => {
+  const toastId = toast.loading("clearing history...");
   try {
     const {
       data: { history },
@@ -75,7 +80,11 @@ export const clearHistoryVideo = async (token, dispatch) => {
       type: DataAction.SET_HISTORY_VIDEOS,
       payload: history,
     });
+    toast.success("History Clear SuccessFully", {
+      id: toastId,
+    });
   } catch (error) {
     console.log("Error while add cleat history", error);
+    toast.error("try again");
   }
 };

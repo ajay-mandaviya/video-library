@@ -14,6 +14,7 @@ import {
 import { Navbar, Sidebar } from "./components";
 import { useAuth, useData } from "./context";
 import { getAllHistory, getLikeVideos, getWatchLaterVideos } from "./services";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   const { dispatch } = useData();
@@ -23,7 +24,6 @@ function App() {
   } = useAuth();
 
   useEffect(() => {
-    console.log("home useEffect");
     if (token) {
       getLikeVideos(dispatch, token);
       getAllHistory(token, dispatch);
@@ -33,6 +33,18 @@ function App() {
 
   return (
     <div className="app">
+      <Toaster
+        position="top-right"
+        reverseOrder={false}
+        toastOptions={{
+          duration: 3000,
+          style: {
+            borderRadius: "10px",
+            background: "#333",
+            color: "#fff",
+          },
+        }}
+      />
       <Navbar />
       <Sidebar />
       <Routes>
