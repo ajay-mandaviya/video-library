@@ -7,13 +7,22 @@ import {
   Liked,
   Login,
   PlayList,
+  PlayListVideo,
+  PrivateRoute,
+  Profile,
   Signup,
   SingleVideo,
   WatchLater,
 } from "./pages";
+
 import { Navbar, Sidebar } from "./components";
 import { useAuth, useData } from "./context";
-import { getAllHistory, getLikeVideos, getWatchLaterVideos } from "./services";
+import {
+  getAllHistory,
+  getLikeVideos,
+  getUserPlayList,
+  getWatchLaterVideos,
+} from "./services";
 import { Toaster } from "react-hot-toast";
 
 function App() {
@@ -28,6 +37,7 @@ function App() {
       getLikeVideos(dispatch, token);
       getAllHistory(token, dispatch);
       getWatchLaterVideos(token, dispatch);
+      getUserPlayList(token, dispatch);
     }
   }, [token]);
 
@@ -52,10 +62,47 @@ function App() {
         <Route path="/video/:videoId" element={<SingleVideo />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/liked" element={<Liked />} />
-        <Route path="/history" element={<History />} />
-        <Route path="/watchLater" element={<WatchLater />} />
-        <Route path="/playlist" element={<PlayList />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route
+          path="/liked"
+          element={
+            <PrivateRoute>
+              <Liked />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/history"
+          element={
+            <PrivateRoute>
+              <History />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/watchLater"
+          element={
+            <PrivateRoute>
+              <WatchLater />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/playlist"
+          element={
+            <PrivateRoute>
+              <PlayList />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/playlist/:playlistId"
+          element={
+            <PrivateRoute>
+              <PlayListVideo />
+            </PrivateRoute>
+          }
+        />
       </Routes>
     </div>
   );

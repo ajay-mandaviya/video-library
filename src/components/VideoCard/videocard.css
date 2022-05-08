@@ -12,6 +12,7 @@
   background: none;
   border: none;
   color: var(--white);
+  position: relative;
 }
 .card-subtitle {
   color: var(--white);

@@ -1,15 +1,17 @@
 import React from "react";
 import "./navbar.css";
 import { Link } from "react-router-dom";
-import { useData } from "../../context";
+import { useData, useAuth } from "../../context";
 import { DataAction } from "../../constants";
+
 export const Navbar = () => {
   const {
     data: { searchBy },
     dispatch,
   } = useData();
-
-  console.log("search by", searchBy);
+  const {
+    auth: { token },
+  } = useAuth();
   const handleSearch = (e) => {
     dispatch({
       type: DataAction.SET_SEARCH_VIDEO,
@@ -30,12 +32,15 @@ export const Navbar = () => {
         ></input>
       </div>
       <ul>
-        <Link to="/">
-          <i className="fas fa-user"></i>
-        </Link>
-        <Link to="/login">
-          <i className="fas fa-sign-in-alt"></i>
-        </Link>
+        {token ? (
+          <Link to="/profile">
+            <i className="fas fa-user "></i>
+          </Link>
+        ) : (
+          <Link to="/login">
+            <i className="fas fa-sign-in-alt"></i>
+          </Link>
+        )}
       </ul>
     </nav>
   );

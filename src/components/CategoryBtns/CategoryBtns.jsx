@@ -8,7 +8,6 @@ const CategoryBtns = (props) => {
     data: { sortBy },
     dispatch,
   } = useData();
-  console.log("categoryName", categoryName, "sortBy", sortBy);
   const handleCategory = (category) => {
     dispatch({
       type: DataAction.SET_SORT_CATEGORY,

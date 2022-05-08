@@ -50,7 +50,7 @@ const History = () => {
       </div>
       <div className="video-grid">
         {history_videos?.map((video, index) => {
-          return <VideoCard {...video} key={index} />;
+          return <VideoCard {...video} key={index} showHistory={true} />;
         })}
       </div>
     </div>

@@ -35,7 +35,7 @@ const Liked = () => {
       </div>
       <div className="video-grid">
         {liked_videos?.map((video, index) => {
-          return <VideoCard {...video} key={index} />;
+          return <VideoCard {...video} key={index} showLike = {true} />;
         })}
       </div>
     </div>

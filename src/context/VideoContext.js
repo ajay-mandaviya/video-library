@@ -17,6 +17,7 @@ const VideoProvider = ({ children }) => {
     watchLater_videos: [],
     sortBy: "",
     searchBy: "",
+    isVideoOptionOpen: false,
   });
 
   useEffect(() => {

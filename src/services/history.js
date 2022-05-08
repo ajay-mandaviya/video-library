@@ -45,7 +45,7 @@ export const addHistoryVideo = async (token, video, dispatch) => {
     console.log("Error while add history", error);
   }
 };
-export const removeHistoryVideo = async (token, id, dispatch) => {
+export const removeHistoryVideo = async (id, token, dispatch) => {
   try {
     const {
       data: { history },
@@ -59,7 +59,7 @@ export const removeHistoryVideo = async (token, id, dispatch) => {
       type: DataAction.SET_HISTORY_VIDEOS,
       payload: history,
     });
-    toast.success("video remove successfully");
+    toast.success("Video Remove successfully");
   } catch (error) {
     console.log("Error while add remove history", error);
     toast.error("try again");

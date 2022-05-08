@@ -1,14 +1,25 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context";
 import "./login.css";
 
 const Login = () => {
-  const { loginUser } = useAuth();
+  const {
+    auth: { token },
+    loginUser,
+  } = useAuth();
+  const location = useLocation();
+  const navigate = useNavigate();
   const [userLogin, setUserLogin] = useState({
     email: "",
     password: "",
   });
+
+  if (token) {
+    setTimeout(() => {
+      navigate(location?.state?.from || "/", { replace: true });
+    }, 1000);
+  }
   // email: "adarshbalika@gmail.com",
   //   password: "adarshBalika123",
   const handleInputChange = (e) => {

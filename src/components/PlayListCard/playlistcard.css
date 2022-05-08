@@ -1,0 +1,37 @@
+.playlist-card {
+  width: 16rem;
+  position: relative;
+  border: 2px solid rgba(153, 153, 153, 0.521);
+  cursor: pointer;
+}
+.play-list-img {
+  width: 100%;
+}
+.play-list-info {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0.8rem;
+  color: var(--white-color);
+}
+.play-list-highlight {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 9.5rem;
+  width: 40%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  opacity: 0.8;
+  background-color: #141319;
+  color: var(--white-color);
+  font-weight: bolder;
+}
+.list-empty {
+  position: relative;
+  display: flex;
+  height: 9rem;
+  justify-content: center;
+  align-items: center;
+  background-color: lightgrey;
+}

@@ -12,7 +12,12 @@ export const authReducer = (state, action) => {
         ...state,
         user: action.payload,
       };
-
+    case Authaction.SET_AUTH_LOGOUT:
+      return {
+        ...state,
+        user: {},
+        token: "",
+      };
     default:
       return state;
   }
