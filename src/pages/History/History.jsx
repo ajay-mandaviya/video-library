@@ -16,8 +16,6 @@ const History = () => {
   const handleNavigate = () => {
     navigate("/");
   };
-
-  console.log("history_videos", history_videos);
   const handleClearHistory = () => {
     clearHistoryVideo(token, dispatch);
   };

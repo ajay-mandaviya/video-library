@@ -9,10 +9,8 @@ import {
 import toast from "react-hot-toast";
 import "./videoOption.css";
 import PlayListModal from "../PlayListModal/PlayListModal";
-
 const VideoOption = ({
   cardRef,
-  isOptionOpen,
   setIsOptionOpen,
   isInWatchLater,
   video,
@@ -30,25 +28,6 @@ const VideoOption = ({
 
   console.log("isPlayListOpen", isPlayListOpen);
 
-  // useEffect(() => {
-  //   const handleOutSideClick = (e) => {
-  //     console.log("cardRef", cardRef?.current);
-  //     if (
-  //       isOptionOpen &&
-  //       cardRef?.current &&
-  //       !cardRef?.current?.contains(e.target)
-  //     ) {
-  //       setIsOptionOpen(false);
-  //     } else if (e.target.classList.contains("playlist-modal")) {
-  //       setIsOptionOpen(true);
-  //     }
-  //   };
-  //   document.addEventListener("mousedown", handleOutSideClick);
-  //   return () => {
-  //     document.removeEventListener("mousedown", handleOutSideClick);
-  //   };
-  // }, []);
-
   const handleAddToWatchLater = () => {
     if (token) {
       if (isInWatchLater) {
@@ -62,7 +41,6 @@ const VideoOption = ({
     setIsOptionOpen(false);
   };
   const handleAddToPlayList = () => {
-    console.log("disable", isOptionOpen);
     setIsPlayListOpen((prev) => !prev);
   };
 
@@ -77,7 +55,7 @@ const VideoOption = ({
   };
   return (
     <>
-      <div className="video-card-option" ref={cardRef}>
+      <div className="video-card-option ref" ref={cardRef}>
         <div onClick={handleAddToWatchLater}>
           <i
             className={`${isInWatchLater ? "fas fa-clock" : "far fa-clock"}`}

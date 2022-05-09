@@ -51,7 +51,7 @@ const PlayListModal = ({ video, setIsPlayListOpen }) => {
   };
 
   return (
-    <div className="playlist-modal-body">
+    <div className="playlist-modal-body ref">
       <div className="playlist-modal">
         <div className="playlist-modal-header">
           <h3>Save to PlayList</h3>
@@ -100,7 +100,12 @@ const PlayListModal = ({ video, setIsPlayListOpen }) => {
         <div className="playlist-modal-btn">
           {isInputVisible ? (
             <div className="user-select-btn">
-              <button disabled = {playlistTitle === ""} onClick={handleSavePlayList}>Save</button>
+              <button
+                disabled={playlistTitle === ""}
+                onClick={handleSavePlayList}
+              >
+                Save
+              </button>
               <button onClick={handleCancel}>Cancel</button>
             </div>
           ) : (
