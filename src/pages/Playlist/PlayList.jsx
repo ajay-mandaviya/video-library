@@ -1,16 +1,13 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { EmptyPageBox, PlayListCard, VideoCard } from "../../components";
+import { EmptyPageBox, PlayListCard } from "../../components";
 import { useData } from "../../context";
 import "./playlist.css";
 
 const PlayList = () => {
   const {
     data: { playList },
-    dispatch,
   } = useData();
-
-  console.log("playList", playList);
 
   const navigate = useNavigate();
   const handleNavigate = () => {
