@@ -16,8 +16,6 @@ const History = () => {
   const handleNavigate = () => {
     navigate("/");
   };
-
-  console.log("history_videos", history_videos);
   const handleClearHistory = () => {
     clearHistoryVideo(token, dispatch);
   };
@@ -50,7 +48,7 @@ const History = () => {
       </div>
       <div className="video-grid">
         {history_videos?.map((video, index) => {
-          return <VideoCard {...video} key={index} />;
+          return <VideoCard {...video} key={index} showHistory={true} />;
         })}
       </div>
     </div>

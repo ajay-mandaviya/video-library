@@ -1,4 +1,5 @@
 import { loginApi, signUpUserApi } from "./auth";
+import { addToLike, getLikeVideos, removeLike } from "./likeapi";
 import {
   addHistoryVideo,
   getAllHistory,
@@ -6,7 +7,14 @@ import {
   clearHistoryVideo,
 } from "./history";
 
-import { addToLike, getLikeVideos, removeLike } from "./likeapi";
+import {
+  getPlayList,
+  deletePlayList,
+  getUserPlayList,
+  createPlayList,
+  addVideoToPlayList,
+  deleteVideoFromPlayList,
+} from "./playlist";
 import {
   addToWatchLater,
   getWatchLaterVideos,
@@ -26,4 +34,10 @@ export {
   getWatchLaterVideos,
   removeToWatchLater,
   addToWatchLater,
+  deletePlayList,
+  getUserPlayList,
+  createPlayList,
+  getPlayList,
+  addVideoToPlayList,
+  deleteVideoFromPlayList,
 };

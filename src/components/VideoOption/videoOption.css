@@ -1,0 +1,21 @@
+.video-card-option {
+  position: absolute;
+  z-index: 2;
+  right: 1rem;
+  padding: 0.4rem;
+  background-color: #222230;
+  display: inline-block;
+  top: 183px;
+}
+.video-card-option div {
+  margin: 0.5rem 0;
+  padding: 0.4rem 0.5rem;
+  color: var(--white-color);
+  cursor: pointer;
+}
+.video-card-option i {
+  margin-right: 0.5rem;
+}
+.video-card-option div:hover {
+  background-color: var(--active-color);
+}

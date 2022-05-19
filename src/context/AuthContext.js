@@ -72,7 +72,7 @@ const AuthProvider = ({ children }) => {
         data: { createdUser, encodedToken },
         status,
       } = await signUpUserApi(newUser);
-
+      console.log("createdUser", createdUser);
       if (status === 201) {
         dispatchAuth({
           type: Authaction.SET_TOKEN,
@@ -100,8 +100,16 @@ const AuthProvider = ({ children }) => {
     }
   };
 
+  const signOutUser = () => {
+    localStorage.removeItem("streamUser");
+    dispatchAuth({
+      type: Authaction.SET_AUTH_LOGOUT,
+    });
+    navigate("/");
+  };
+
   return (
-    <AuthContext.Provider value={{ auth, loginUser, signupUser }}>
+    <AuthContext.Provider value={{ auth, loginUser, signupUser, signOutUser }}>
       {children}
     </AuthContext.Provider>
   );

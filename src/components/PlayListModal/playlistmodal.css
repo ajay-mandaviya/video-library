@@ -1,0 +1,67 @@
+.playlist-modal-body {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  background-color: rgba(77, 77, 77, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.playlist-modal {
+  width: 300px;
+  background-color: #191921;
+  padding: 0.5rem;
+  color: white;
+}
+.playlist-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.playlist-modal-header h3 {
+  margin: 0;
+}
+.line {
+  height: 0.5px;
+  background-color: lightgray;
+  margin: 0.75rem 0;
+}
+.user-playlist {
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+  gap: 10px;
+  font-size: 1.2rem;
+}
+.user-playlist input[type="checkbox"] {
+  width: 1rem;
+  height: 1rem;
+}
+.user-playlist input[type="text"] {
+  width: 50%;
+  padding: 0.1rem;
+  outline: none;
+}
+.playlist-modal-btn {
+  width: 100%;
+  margin: 0 auto;
+}
+.playlist-modal-btn button {
+  background-color: #00008b;
+  color: var(--white-color);
+  padding: 0.4rem 0.6rem;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+.user-select-btn button {
+  width: 45%;
+}
+.user-select-btn {
+  display: flex;
+  color: var(--white-color);
+  justify-content: space-between;
+}

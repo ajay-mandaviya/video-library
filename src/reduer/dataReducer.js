@@ -36,6 +36,25 @@ export const dataReducer = (state, action) => {
         ...state,
         searchBy: action.payload,
       };
+    case DataAction.SET_USER_PLAYLIST:
+      return {
+        ...state,
+        playList: action.payload,
+      };
+    case DataAction.ADD_VIDEO_PLAYLIST:
+      return {
+        ...state,
+        playList: state.playList.map((list) =>
+          list._id === action.payload._id ? action.payload : list
+        ),
+      };
+     case DataAction.SET_USER_LOGOUT : return{
+       ...state,
+       playList : [],
+       watchLater_videos: [],
+       history_videos : [],
+      liked_videos : []
+     } 
     default:
       return state;
   }

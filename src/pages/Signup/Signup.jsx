@@ -1,15 +1,28 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context";
 
 import "./signup.css";
 const Signup = () => {
-  const { signupUser } = useAuth();
+  const {
+    auth: { token },
+    signupUser,
+  } = useAuth();
+
+  const navigagte = useNavigate();
+  const location = useLocation();
+  console.log("location is", location);
   const [user, setUser] = useState({
-    name: "",
+    firstName: "",
     email: "",
     password: "",
   });
+
+  if (token) {
+    setTimeout(() => {
+      navigagte(location?.state?.from || "/", { replace: true });
+    }, 1000);
+  }
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -36,8 +49,8 @@ const Signup = () => {
               </label>
               <input
                 type="text"
-                name="name"
-                value={user.name}
+                name="firstName"
+                value={user.firstName}
                 onChange={handleInputChange}
                 className="white-text"
                 placeholder="Enter your Name"
