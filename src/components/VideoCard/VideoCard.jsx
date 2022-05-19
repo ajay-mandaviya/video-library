@@ -35,7 +35,7 @@ const VideoCard = (props) => {
   }, [isOptionOpen]);
 
   const {
-    data: { history_videos, watchLater_videos, playList, liked_videos },
+    data: { history_videos, watchLater_videos, liked_videos },
     dispatch,
   } = useData();
   const {
