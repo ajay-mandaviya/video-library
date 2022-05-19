@@ -75,12 +75,12 @@ const PlayListModal = ({ video, setIsPlayListOpen }) => {
               />
             </label>
           )}
-          {playList.length == 0 ? (
+          {playList.length === 0 ? (
             <p>Start Create a PlayList</p>
           ) : (
             playList.map((data) => {
               const isVideoInPlayList = isVideoInList(data.videos, video._id);
-              // console.log("isVideoInPlayList", isVideoInPlayList);
+
               return (
                 <label className="user-playlist" key={data._id}>
                   <input

@@ -8,7 +8,7 @@ const PlayListVideoCard = (props) => {
   const [isOptionOpen, setIsOptionOpen] = useState(false);
   const navigate = useNavigate();
   const {
-    data: { history_videos, playList },
+    data: { history_videos },
     dispatch,
   } = useData();
   const {

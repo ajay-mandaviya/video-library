@@ -8,7 +8,6 @@ import { isVideoInList } from "../../utils";
 import { useAuth } from "../../context";
 import toast from "react-hot-toast";
 import {
-  addHistoryVideo,
   addToLike,
   addToWatchLater,
   removeLike,
@@ -19,12 +18,11 @@ const SingleVideo = () => {
   const { videoId } = useParams();
 
   const {
-    data: { liked_videos, history_videos, watchLater_videos },
+    data: { liked_videos, watchLater_videos },
     dispatch,
   } = useData();
   console.log("watchLater_videos", watchLater_videos);
   const isInLike = isVideoInList(liked_videos, videoId);
-  const isInHistory = isVideoInList(history_videos, videoId);
   const isInWatchLater = isVideoInList(watchLater_videos, videoId);
   const {
     auth: { token },
@@ -46,6 +44,7 @@ const SingleVideo = () => {
   };
   useEffect(() => {
     getVideo();
+    //eslint-disable-next-line
   }, []);
   const handleLike = () => {
     if (token) {

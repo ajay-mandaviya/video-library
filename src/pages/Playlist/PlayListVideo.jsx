@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import { Loader, VideoCard } from "../../components";
+import { Loader } from "../../components";
 import { useData } from "../../context";
 import PlayListVideoCard from "./PlayListVideoCard";
 

@@ -91,7 +91,20 @@ const Login = () => {
               <button type="submit" className="login-btn">
                 Login
               </button>
+              <button
+                className="guest login-btn"
+                onClick={() => {
+                  console.log("gest kigubg");
+                  loginUser({
+                    email: "adarshbalika@gmail.com",
+                    password: "adarshBalika123",
+                  });
+                }}
+              >
+                Guest Login
+              </button>
             </div>
+
             <Link to={"/signup"} className="check-account flex">
               <p>Create New Account</p>
               <i className="fas fa-angle-right"></i>

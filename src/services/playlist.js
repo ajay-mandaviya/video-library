@@ -87,17 +87,7 @@ export const deletePlayList = async (id, token, dispatch) => {
   }
 };
 
-export const getPlayList = async (playListId, token) => {
-  try {
-    const data = await axios.get(`/api/user/playlists/${playListId}`, {
-      headers: {
-        authorization: token,
-      },
-    });
-  } catch (error) {
-    console.log("error while get singlr playlist", error);
-  }
-};
+export const getPlayList = async (playListId, token) => {};
 
 export const addVideoToPlayList = async (listId, video, token, dispatch) => {
   const toastId = toast.loading("Adding to PlayList...");
