@@ -23,3 +23,13 @@
   max-width: 100%;
   object-fit: cover;
 }
+@media only screen and (max-width: 564px) {
+  .card {
+    width: 100%;
+  }
+  .navbar-logo{
+      padding: 0;
+      margin: 0 auto;
+      font-size: 1.5rem;
+  }
+}
