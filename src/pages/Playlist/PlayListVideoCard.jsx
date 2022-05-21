@@ -58,14 +58,15 @@ const PlayListVideoCard = (props) => {
             <div>{uploaded}</div>
           </div>
         </div>
-      </div>
-      {isOptionOpen && (
+        {isOptionOpen && (
         <div className="video-card-option">
           <div onClick={removePlayListVideo}>
             <i className="fas fa-play-circle"></i> Remove to PlayList
           </div>
         </div>
       )}
+      </div>
+      
     </>
   );
 };
