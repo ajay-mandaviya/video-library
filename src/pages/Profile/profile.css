@@ -44,3 +44,10 @@
 .info p:nth-of-type(2) {
   margin-left: 20px;
 }
+
+@media only screen and (max-width: 768px) {
+  .profile-container {
+    margin: 0;
+    width: 100%;
+  }
+}

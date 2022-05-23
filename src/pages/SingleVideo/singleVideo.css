@@ -72,3 +72,26 @@
     overflow-x: auto;
   }
 }
+
+@media only screen and (max-width: 768px) {
+  .single-video-page {
+    margin-left: 0.4rem;
+    padding-bottom: 4rem;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .user-btns {
+    gap: 0;
+    justify-content: space-between;
+  }
+  .user-btn span {
+    margin-left: 1px;
+  }
+}
+
+@media only screen and (max-width: 482px) {
+  .user-btn span {
+    display: none;
+  }
+}

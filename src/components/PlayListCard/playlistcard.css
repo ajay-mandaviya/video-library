@@ -35,3 +35,8 @@
   align-items: center;
   background-color: lightgrey;
 }
+@media only screen and (max-width: 564px) {
+  .playlist-card {
+    width: 100%;
+  }
+}

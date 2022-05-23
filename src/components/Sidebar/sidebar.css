@@ -4,7 +4,6 @@
   flex-direction: column;
   width: 250px;
   position: fixed;
-  overflow-y: auto;
   left: 0;
   height: 100%;
 }
@@ -30,4 +29,36 @@
   margin-left: 1rem;
   color: var(--white-color);
   font-size: 1.2rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .sidebar-container {
+    bottom: 0;
+    height: max-content;
+    width: 100vw;
+    z-index: 10;
+    overflow-y: none;
+  }
+  .sidebar-container ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+@media only screen and (max-width: 564px) {
+  .sidebar-link > div {
+    margin-left: 0;
+    font-size: 12px;
+    color: var(--white-color);
+  }
+  .sidebar-link i {
+    font-size: 12px;
+  }
+}
+
+@media only screen and (max-width: 418px) {
+  .sidebar-link > div {
+    display: none;
+  }
 }
